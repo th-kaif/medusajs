@@ -1,0 +1,1 @@
+export {Kaif as Component} from './kaif';
