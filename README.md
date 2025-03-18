@@ -1,1 +1,1 @@
-# test
+# Standalone Admin Dashboard
