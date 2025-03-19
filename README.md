@@ -33,7 +33,7 @@ Follow the steps below to set up and run the standalone admin dashboard:
     REDIS_URL=redis://localhost:6379
     JWT_SECRET=supersecret
     COOKIE_SECRET=supersecret
-    DATABASE_URL=postgres://postgres:Jj%4089aik12@localhost/medusa-explore-admin-panel
+    DATABASE_URL=postgres://postgres:db_pass@localhost/medusa-explore-admin-panel
     MEDUSA_ADMIN_ONBOARDING_NEXTJS_DIRECTORY=explore-admin-panel-storefrontv
     ```
 
