@@ -1,42 +1,41 @@
-import { useLoaderData, useParams } from "react-router-dom"
+import { useLoaderData, useParams } from "react-router-dom";
 
-import { TwoColumnPageSkeleton } from "../../../components/common/skeleton"
-import { TwoColumnPage } from "../../../components/layout/pages"
-import { useProduct } from "../../../hooks/api/products"
-import { ProductAttributeSection } from "./components/product-attribute-section"
-import { ProductGeneralSection } from "./components/product-general-section"
-import { ProductMediaSection } from "./components/product-media-section"
-import { ProductOptionSection } from "./components/product-option-section"
-import { ProductOrganizationSection } from "./components/product-organization-section"
-import { ProductSalesChannelSection } from "./components/product-sales-channel-section"
-import { ProductVariantSection } from "./components/product-variant-section"
-import { productLoader } from "./loader"
+import { TwoColumnPageSkeleton } from "../../../components/common/skeleton";
+import { TwoColumnPage } from "../../../components/layout/pages";
+import { useProduct } from "../../../hooks/api/products";
+import { ProductAttributeSection } from "./components/product-attribute-section";
+import { ProductGeneralSection } from "./components/product-general-section";
+import { ProductMediaSection } from "./components/product-media-section";
+import { ProductOptionSection } from "./components/product-option-section";
+import { ProductOrganizationSection } from "./components/product-organization-section";
+import { ProductSalesChannelSection } from "./components/product-sales-channel-section";
+import { ProductVariantSection } from "./components/product-variant-section";
+import { productLoader } from "./loader";
 
-import { useExtension } from "../../../providers/extension-provider"
-import { ProductShippingProfileSection } from "./components/product-shipping-profile-section"
+import { useExtension } from "../../../providers/extension-provider";
+import { ProductShippingProfileSection } from "./components/product-shipping-profile-section";
 
-import { Container, Heading, Label } from "@medusajs/ui"
+import { Container, Heading, Label } from "@medusajs/ui";
 export const ProductDetail = () => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<typeof productLoader>
-  >
+  >;
 
-  const { id } = useParams()
-  const { product, isLoading, isError, error } = useProduct(
-    id!,
-    { fields: "+brand.*" },
-  )
+  const { id } = useParams();
+  const { product, isLoading, isError, error } = useProduct(id!, {
+    fields: "+brand.*",
+  });
 
-  const brandName = product?.brand?.name || "No brand"
+  const brandName = (product)?.brand?.name || "No brand";
 
-  console.log("product", product)
+  console.log("product", product);
 
-  const { getWidgets } = useExtension()
+  const { getWidgets } = useExtension();
 
-  const after = getWidgets("product.details.after")
-  const before = getWidgets("product.details.before")
-  const sideAfter = getWidgets("product.details.side.after")
-  const sideBefore = getWidgets("product.details.side.before")
+  const after = getWidgets("product.details.after");
+  const before = getWidgets("product.details.before");
+  const sideAfter = getWidgets("product.details.side.after");
+  const sideBefore = getWidgets("product.details.side.before");
 
   if (isLoading || !product) {
     return (
@@ -46,11 +45,11 @@ export const ProductDetail = () => {
         showJSON
         showMetadata
       />
-    )
+    );
   }
 
   if (isError) {
-    throw error
+    throw error;
   }
 
   return (
@@ -66,13 +65,9 @@ export const ProductDetail = () => {
       data={product}
     >
       <TwoColumnPage.Main>
-      <Container className="divide-y p-0">
-          <div className="flex items-center justify-between px-6 py-4">
-            <Heading level="h2">Brand Name</Heading>
-          </div>
-          <div className="text-center">
-            <Label>{ brandName }</Label>
-          </div>
+        <Container className="flex items-center justify-between px-6 py-4">
+          <Heading level="h2">Brand</Heading>
+          <Label>{brandName}</Label>
         </Container>
         <ProductGeneralSection product={product} />
         <ProductMediaSection product={product} />
@@ -86,5 +81,5 @@ export const ProductDetail = () => {
         <ProductAttributeSection product={product} />
       </TwoColumnPage.Sidebar>
     </TwoColumnPage>
-  )
-}
+  );
+};
