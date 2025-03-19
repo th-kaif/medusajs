@@ -46,9 +46,9 @@ export const normalizeProductFormValues = (
       values.variants.filter((variant) => variant.should_create),
       values.regionsCurrencyMap
     ),
-    // additional_data: {
-    //   brand_id: values.brand?.id || undefined,
-    // },
+    additional_data: {
+      brand_id: values.brand?.id || undefined,
+    },
   }
 }
 

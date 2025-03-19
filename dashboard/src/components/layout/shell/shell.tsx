@@ -36,7 +36,7 @@ export const Shell = ({ children }: PropsWithChildren) => {
           <Topbar />
           <main
             className={clx(
-              "flex h-full w-full flex-col items-center overflow-y-auto transition-opacity delay-200 duration-200",
+              "bg-black flex h-full w-full flex-col items-center overflow-y-auto transition-opacity delay-200 duration-200",
               {
                 "opacity-25": loading,
               }

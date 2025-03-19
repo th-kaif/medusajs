@@ -106,21 +106,19 @@ export const ProductGeneralSection = ({
         return <Component key={index} data={product} />
       })} */}
 
-{
-  Object.entries(product).map(([key, value]) => {
-    if (value === null || value === undefined) {
-      return null;
-    }
+      {Object.entries(product).map(([key, value]) => {
+        if (value === null || value === undefined) {
+          return null;
+        }
 
-    if (typeof value === 'object') {
-      if (key === "brand" && value.name) {
-        return <SectionRow key={key} title={"Brand"} value={value.name} />;
-      }
-      return null;
-    }
-    return <SectionRow key={key} title={key} value={String(value)} />;
-  })
-}
+        if (typeof value === 'object') {
+          if (key === "brand" && value.name) {
+            return <SectionRow key={key} title={"Brand"} value={value.name} />;
+          }
+          return null;
+        }
+        return <SectionRow key={key} title={key} value={String(value)} />;
+      })}
     </Container>
   );
 };
